@@ -7,12 +7,18 @@ prediction using only latent features learned from local graph topology.
 Usage: python train_lp.py <dataset_str> <gpu_id>
 """
 
+
+
 import sys
+
+# Commenting down the below code block because I want to run the program on CPU.
+"""
 if len(sys.argv) < 3:
     print('\nUSAGE: python %s <dataset_str> <gpu_id>' % sys.argv[0])
     sys.exit()
 dataset = sys.argv[1]
 gpu_id = sys.argv[2]
+"""
 
 import numpy as np
 import scipy.sparse as sp
@@ -25,11 +31,16 @@ from utils import generate_data, batch_data
 from utils_gcn import load_citation_data, split_citation_data
 from longae.models.ae import autoencoder
 
+# No need to check CUDA available devices.
+"""
 import os
 os.environ['CUDA_VISIBLE_DEVICES'] = str(gpu_id)
+"""
 
+dataset = sys.argv[1]
 
 print('\nLoading dataset {:s}...\n'.format(dataset))
+
 if dataset in ['protein', 'metabolic', 'conflict', 'powergrid']:
     adj, feats = load_mat_data(dataset)
     print('\nPreparing test split...\n')

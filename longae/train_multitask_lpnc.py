@@ -11,11 +11,15 @@ Usage: python train_multitask_lpnc.py <dataset_str> <gpu_id>
 """
 
 import sys
+
+# Commenting down the below code block because I want to run the program on CPU.
+"""
 if len(sys.argv) < 3:
     print('\nUSAGE: python %s <dataset_str> <gpu_id>' % sys.argv[0])
     sys.exit()
 dataset = sys.argv[1]
 gpu_id = sys.argv[2]
+"""
 
 import numpy as np
 from keras import backend as K
@@ -29,8 +33,13 @@ from utils import generate_data, batch_data
 from utils import compute_masked_accuracy
 from longae.models.ae import autoencoder_multitask
 
+# No need to check CUDA available devices.
+"""
 import os
 os.environ['CUDA_VISIBLE_DEVICES'] = str(gpu_id)
+"""
+
+dataset = sys.argv[1]
 
 
 print('\nLoading dataset {:s}...\n'.format(dataset))

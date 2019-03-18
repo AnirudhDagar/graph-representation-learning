@@ -8,11 +8,15 @@ Usage: python train_reconstruction.py <dataset_str> <gpu_id>
 """
 
 import sys
+
+# Commenting down the below code block because I want to run the program on CPU.
+"""
 if len(sys.argv) < 3:
     print('\nUSAGE: python %s <dataset_str> <gpu_id>' % sys.argv[0])
     sys.exit()
 dataset = sys.argv[1]
 gpu_id = sys.argv[2]
+"""
 
 import numpy as np
 import scipy.sparse as sp
@@ -22,8 +26,13 @@ from utils import create_adj_from_edgelist, compute_precisionK
 from utils import generate_data, batch_data, split_train_test
 from longae.models.ae import autoencoder
 
+# No need to check CUDA available devices.
+"""
 import os
 os.environ['CUDA_VISIBLE_DEVICES'] = str(gpu_id)
+"""
+
+dataset = sys.argv[1]
 
 
 print('\nLoading dataset {:s}...\n'.format(dataset))
