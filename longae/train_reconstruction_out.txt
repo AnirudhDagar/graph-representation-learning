@@ -1,0 +1,298 @@
+
+Loading dataset arxiv-grqc...
+
+
+Compiling autoencoder model...
+
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+data (InputLayer)            (None, 5242)              0         
+_________________________________________________________________
+drop0 (Dropout)              (None, 5242)              0         
+_________________________________________________________________
+encoded1 (Dense)             (None, 256)               1342208   
+_________________________________________________________________
+encoded2 (Dense)             (None, 128)               32896     
+_________________________________________________________________
+drop2 (Dropout)              (None, 128)               0         
+_________________________________________________________________
+decoded2 (DenseTied)         (None, 256)               256       
+_________________________________________________________________
+decoded1 (DenseTied)         (None, 5242)              5242      
+=================================================================
+Total params: 1,380,602
+Trainable params: 1,380,602
+Non-trainable params: 0
+_________________________________________________________________
+None
+
+Fitting autoencoder model...
+
+
+Epoch 1/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.039892
+
+Epoch 2/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.008136
+
+Epoch 3/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.007959
+
+Epoch 4/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.007932
+
+Epoch 5/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.007903
+
+Epoch 6/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.007871
+
+Epoch 7/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.007783
+
+Epoch 8/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.007255
+
+Epoch 9/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.006642
+
+Epoch 10/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.006217
+
+Epoch 11/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.005895
+
+Epoch 12/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.005663
+
+Epoch 13/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.005473
+
+Epoch 14/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.005287
+
+Epoch 15/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.005040
+
+Epoch 16/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.004794
+
+Epoch 17/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.004470
+
+Epoch 18/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.004186
+
+Epoch 19/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.003923
+
+Epoch 20/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.003628
+
+Epoch 21/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.003435
+
+Epoch 22/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.003225
+
+Epoch 23/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.003085
+
+Epoch 24/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002934
+
+Epoch 25/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002876
+
+Epoch 26/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002776
+
+Epoch 27/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002654
+
+Epoch 28/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002643
+
+Epoch 29/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002540
+
+Epoch 30/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002486
+
+Epoch 31/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002470
+
+Epoch 32/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002414
+
+Epoch 33/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002357
+
+Epoch 34/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002325
+
+Epoch 35/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002317
+
+Epoch 36/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002267
+
+Epoch 37/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002224
+
+Epoch 38/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002224
+
+Epoch 39/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002192
+
+Epoch 40/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002124
+
+Epoch 41/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002091
+
+Epoch 42/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002108
+
+Epoch 43/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002119
+
+Epoch 44/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002083
+
+Epoch 45/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002111
+
+Epoch 46/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002079
+
+Epoch 47/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002040
+
+Epoch 48/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002022
+
+Epoch 49/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002010
+
+Epoch 50/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.002008
+
+Evaluating reconstruction performance...
+Computing precision@k...
+Precision@10: 1.000000
+Precision@500: 1.000000
+Precision@1000: 1.000000
+Precision@2000: 1.000000
+Precision@3000: 1.000000
+Precision@4000: 1.000000
+Precision@5000: 1.000000
+Precision@6000: 1.000000
+Precision@7000: 1.000000
+Precision@8000: 1.000000
+Precision@9000: 0.999889
+Precision@10000: 0.999700
+
+All Done.

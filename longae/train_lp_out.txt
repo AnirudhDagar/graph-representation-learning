@@ -1,0 +1,514 @@
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "train_lp.py", line 30, in <module>
+    from longae.models.ae import autoencoder
+ImportError: No module named longae.models.ae
+(eeml)  ✘ gollum@Gollums-MacBook-Pro  ~/Desktop/Work/graph-representation-learning/longae   master ●  cd ..
+(eeml)  gollum@Gollums-MacBook-Pro  ~/Desktop/Work/graph-representation-learning   master ●  pwd
+/Users/gollum/Desktop/Work/graph-representation-learning
+(eeml)  gollum@Gollums-MacBook-Pro  ~/Desktop/Work/graph-representation-learning   master ●  unset PYTHONPATH
+
+(eeml)  gollum@Gollums-MacBook-Pro  ~/Desktop/Work/graph-representation-learning   master ●  export PYTHONPATH="/Users/gollum/Desktop/Work/graph-representation-learning::pwd:pwd/slim$PYTHONPATH"
+(eeml)  gollum@Gollums-MacBook-Pro  ~/Desktop/Work/graph-representation-learning   master ●  python train_lp.py cora
+python: can't open file 'train_lp.py': [Errno 2] No such file or directory
+(eeml)  ✘ gollum@Gollums-MacBook-Pro  ~/Desktop/Work/graph-representation-learning   master ●  cd longae
+(eeml)  gollum@Gollums-MacBook-Pro  ~/Desktop/Work/graph-representation-learning/longae   master ●  python train_lp.py cora
+Using TensorFlow backend.
+
+Loading dataset cora...
+
+
+Preparing test split...
+
+train_lp.py:51: FutureWarning: arrays to stack must be passed as a "sequence" type such as list or tuple. Support for non-sequence iterables such as generators is deprecated as of NumPy 1.16 and will raise an error in the future.
+  test_inds = np.vstack({tuple(row) for row in test_inds})
+
+Compiling autoencoder model...
+
+WARNING:tensorflow:From /Users/gollum/anaconda3/envs/eeml/lib/python2.7/site-packages/tensorflow/python/ops/control_flow_ops.py:423: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /Users/gollum/anaconda3/envs/eeml/lib/python2.7/site-packages/keras/backend/tensorflow_backend.py:3445: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+data (InputLayer)            (None, 2708)              0
+_________________________________________________________________
+drop0 (Dropout)              (None, 2708)              0
+_________________________________________________________________
+encoded1 (Dense)             (None, 256)               693504
+_________________________________________________________________
+encoded2 (Dense)             (None, 128)               32896
+_________________________________________________________________
+drop2 (Dropout)              (None, 128)               0
+_________________________________________________________________
+decoded2 (DenseTied)         (None, 256)               256
+_________________________________________________________________
+decoded1 (DenseTied)         (None, 2708)              2708
+=================================================================
+Total params: 729,364
+Trainable params: 729,364
+Non-trainable params: 0
+_________________________________________________________________
+None
+
+Fitting autoencoder model...
+
+
+Epoch 1/50
+2019-03-18 18:55:02.873925: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Learning rate: 0.001000
+Shuffling data
+WARNING:tensorflow:From /Users/gollum/anaconda3/envs/eeml/lib/python2.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+Avg. training loss: 0.066451
+
+Evaluating val set...
+Val AUC: 0.594977
+Val AP: 0.635531
+
+Epoch 2/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.013522
+
+Evaluating val set...
+Val AUC: 0.600450
+Val AP: 0.637021
+
+Epoch 3/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.012576
+
+Evaluating val set...
+Val AUC: 0.597392
+Val AP: 0.637900
+
+Epoch 4/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.012523
+
+Evaluating val set...
+Val AUC: 0.588579
+Val AP: 0.634568
+
+Epoch 5/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.012454
+
+Evaluating val set...
+Val AUC: 0.584655
+Val AP: 0.629430
+
+Epoch 6/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.012425
+
+Evaluating val set...
+Val AUC: 0.584927
+Val AP: 0.630825
+
+Epoch 7/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.012472
+
+Evaluating val set...
+Val AUC: 0.586826
+Val AP: 0.630427
+
+Epoch 8/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.012391
+
+Evaluating val set...
+Val AUC: 0.585281
+Val AP: 0.636935
+
+Epoch 9/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.012399
+
+Evaluating val set...
+Val AUC: 0.593363
+Val AP: 0.636518
+
+Epoch 10/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.012342
+
+Evaluating val set...
+Val AUC: 0.591975
+Val AP: 0.635087
+
+Epoch 11/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.012359
+
+Evaluating val set...
+Val AUC: 0.591303
+Val AP: 0.635114
+
+Epoch 12/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.012269
+
+Evaluating val set...
+Val AUC: 0.581861
+Val AP: 0.636191
+
+Epoch 13/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.012291
+
+Evaluating val set...
+Val AUC: 0.602111
+Val AP: 0.647359
+
+Epoch 14/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.012272
+
+Evaluating val set...
+Val AUC: 0.597666
+Val AP: 0.640303
+
+Epoch 15/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.012250
+
+Evaluating val set...
+Val AUC: 0.607838
+Val AP: 0.654831
+
+Epoch 16/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.012223
+
+Evaluating val set...
+Val AUC: 0.602300
+Val AP: 0.647061
+
+Epoch 17/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.012185
+
+Evaluating val set...
+Val AUC: 0.593497
+Val AP: 0.640163
+
+Epoch 18/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.012152
+
+Evaluating val set...
+Val AUC: 0.611911
+Val AP: 0.658016
+
+Epoch 19/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.012049
+
+Evaluating val set...
+Val AUC: 0.626001
+Val AP: 0.671014
+
+Epoch 20/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.011910
+
+Evaluating val set...
+Val AUC: 0.637557
+Val AP: 0.677180
+
+Epoch 21/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.011801
+
+Evaluating val set...
+Val AUC: 0.679761
+Val AP: 0.717702
+
+Epoch 22/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.011407
+
+Evaluating val set...
+Val AUC: 0.714613
+Val AP: 0.746338
+
+Epoch 23/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.010995
+
+Evaluating val set...
+Val AUC: 0.748397
+Val AP: 0.779170
+
+Epoch 24/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.010476
+
+Evaluating val set...
+Val AUC: 0.778715
+Val AP: 0.803742
+
+Epoch 25/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.009809
+
+Evaluating val set...
+Val AUC: 0.811283
+Val AP: 0.832162
+
+Epoch 26/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.008907
+
+Evaluating val set...
+Val AUC: 0.841477
+Val AP: 0.861108
+
+Epoch 27/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.008022
+
+Evaluating val set...
+Val AUC: 0.857289
+Val AP: 0.879547
+
+Epoch 28/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.007210
+
+Evaluating val set...
+Val AUC: 0.868064
+Val AP: 0.891262
+
+Epoch 29/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.006571
+
+Evaluating val set...
+Val AUC: 0.875311
+Val AP: 0.898536
+
+Epoch 30/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.006058
+
+Evaluating val set...
+Val AUC: 0.879282
+Val AP: 0.902488
+
+Epoch 31/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.005565
+
+Evaluating val set...
+Val AUC: 0.879636
+Val AP: 0.902284
+
+Epoch 32/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.005362
+
+Evaluating val set...
+Val AUC: 0.883632
+Val AP: 0.906070
+
+Epoch 33/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.005087
+
+Evaluating val set...
+Val AUC: 0.888303
+Val AP: 0.910113
+
+Epoch 34/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.004858
+
+Evaluating val set...
+Val AUC: 0.888500
+Val AP: 0.910404
+
+Epoch 35/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.004796
+
+Evaluating val set...
+Val AUC: 0.887377
+Val AP: 0.909771
+
+Epoch 36/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.004589
+
+Evaluating val set...
+Val AUC: 0.891162
+Val AP: 0.912949
+
+Epoch 37/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.004545
+
+Evaluating val set...
+Val AUC: 0.888529
+Val AP: 0.911220
+
+Epoch 38/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.004336
+
+Evaluating val set...
+Val AUC: 0.888042
+Val AP: 0.911465
+
+Epoch 39/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.004365
+
+Evaluating val set...
+Val AUC: 0.885118
+Val AP: 0.909625
+
+Epoch 40/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.004418
+
+Evaluating val set...
+Val AUC: 0.881532
+Val AP: 0.907472
+
+Epoch 41/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.004240
+
+Evaluating val set...
+Val AUC: 0.882754
+Val AP: 0.908480
+
+Epoch 42/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.004264
+
+Evaluating val set...
+Val AUC: 0.880846
+Val AP: 0.907587
+
+Epoch 43/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.004057
+
+Evaluating val set...
+Val AUC: 0.878907
+Val AP: 0.905747
+
+Epoch 44/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.004203
+
+Evaluating val set...
+Val AUC: 0.879801
+Val AP: 0.906521
+
+Epoch 45/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.004047
+
+Evaluating val set...
+Val AUC: 0.882519
+Val AP: 0.908556
+
+Epoch 46/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.003863
+
+Evaluating val set...
+Val AUC: 0.881916
+Val AP: 0.908597
+
+Epoch 47/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.004031
+
+Evaluating val set...
+Val AUC: 0.877426
+Val AP: 0.906112
+
+Epoch 48/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.003895
+
+Evaluating val set...
+Val AUC: 0.875314
+Val AP: 0.904308
+
+Epoch 49/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.003851
+
+Evaluating val set...
+Val AUC: 0.874135
+Val AP: 0.904410
+
+Epoch 50/50
+Learning rate: 0.001000
+Shuffling data
+Avg. training loss: 0.003955
+
+Evaluating val set...
+Val AUC: 0.873943
+Val AP: 0.903593
+
+All Done.
