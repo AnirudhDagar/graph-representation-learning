@@ -1,19 +1,4 @@
 Using TensorFlow backend.
-Traceback (most recent call last):
-  File "train_lp.py", line 30, in <module>
-    from longae.models.ae import autoencoder
-ImportError: No module named longae.models.ae
-(eeml)  ✘ gollum@Gollums-MacBook-Pro  ~/Desktop/Work/graph-representation-learning/longae   master ●  cd ..
-(eeml)  gollum@Gollums-MacBook-Pro  ~/Desktop/Work/graph-representation-learning   master ●  pwd
-/Users/gollum/Desktop/Work/graph-representation-learning
-(eeml)  gollum@Gollums-MacBook-Pro  ~/Desktop/Work/graph-representation-learning   master ●  unset PYTHONPATH
-
-(eeml)  gollum@Gollums-MacBook-Pro  ~/Desktop/Work/graph-representation-learning   master ●  export PYTHONPATH="/Users/gollum/Desktop/Work/graph-representation-learning::pwd:pwd/slim$PYTHONPATH"
-(eeml)  gollum@Gollums-MacBook-Pro  ~/Desktop/Work/graph-representation-learning   master ●  python train_lp.py cora
-python: can't open file 'train_lp.py': [Errno 2] No such file or directory
-(eeml)  ✘ gollum@Gollums-MacBook-Pro  ~/Desktop/Work/graph-representation-learning   master ●  cd longae
-(eeml)  gollum@Gollums-MacBook-Pro  ~/Desktop/Work/graph-representation-learning/longae   master ●  python train_lp.py cora
-Using TensorFlow backend.
 
 Loading dataset cora...
 
