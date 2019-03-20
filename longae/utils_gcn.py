@@ -28,6 +28,8 @@ def parse_index_file(filename):
     """Parse index file."""
     index = []
     for line in open(filename):
+        # My additions
+        print ("Printing this unstripped text:", line)
         index.append(int(line.strip()))
     return index
 
@@ -35,6 +37,8 @@ def parse_index_file(filename):
 def sample_mask(idx, l):
     """Create mask."""
     mask = np.zeros(l)
+    # What is the use of mask here?
+    print ("Created Mask: ", mask)
     mask[idx] = 1
     return np.array(mask, dtype=np.bool)
 
@@ -42,15 +46,48 @@ def sample_mask(idx, l):
 def load_citation_data(dataset_str):
     """Load citation data."""
     names = ['x', 'y', 'tx', 'ty', 'allx', 'ally', 'graph']
+
+    """
+    
+    x               the feature vectors of the labeled training instances
+    
+    y               the one-hot labels of the labeled training instances
+    
+    tx              the feature vectors of the test instances
+    
+    ty              the one-hot labels of the test instances
+    
+    allx            the feature vectors of both labeled and unlabeled training instances (a superset of x)
+    
+    ally            the labels for instances in allx
+    
+    graph           a dict in the format {index: [index_of_neighbor_nodes]}
+    
+    test.index      the indices of test instances in graph, for the inductive setting
+    
+    """
+
     objects = []
     for i in range(len(names)):
         with open("data/ind.{}.{}".format(dataset_str, names[i]), 'rb') as f:
+            # Depending on the python version we need to change the pickle loading method.
             if sys.version_info > (3, 0):
                 objects.append(pkl.load(f, encoding='latin1'))
             else:
                 objects.append(pkl.load(f))
 
+    # Converting the list to a tuple to make it immutable.
     x, y, tx, ty, allx, ally, graph = tuple(objects)
+    print ("\nPrinted after passing into tuple:", objects)
+    print ("\n\nx:", x)
+    print ("\ny:", y)
+    print ("\ntx:", tx)
+    print ("\nty:", y)
+    print ("\nallx:", allx)
+    print ("\nally:", ally)
+    print ("\ngraph:", graph)
+
+
     test_idx_reorder = parse_index_file("data/ind.{}.test.index".format(dataset_str))
     test_idx_range = np.sort(test_idx_reorder)
 
@@ -58,35 +95,57 @@ def load_citation_data(dataset_str):
         # Fix citeseer dataset (there are some isolated nodes in the graph)
         # Find isolated nodes, add them as zero-vecs into the right position
         test_idx_range_full = range(min(test_idx_reorder), max(test_idx_reorder)+1)
+
         tx_extended = sp.lil_matrix((len(test_idx_range_full), x.shape[1]))
         tx_extended[test_idx_range-min(test_idx_range), :] = tx
         tx = tx_extended
+        print ("tx changed citeseer: ", tx)
+
         ty_extended = np.zeros((len(test_idx_range_full), y.shape[1]))
         ty_extended[test_idx_range-min(test_idx_range), :] = ty
         ty = ty_extended
+        print ("ty changed citeseer: ", ty)
 
+    # Saving it as a sparse matrix and convert it into linked list representation
     features = sp.vstack((allx, tx)).tolil()
+    print ("features:", features)
+
     features[test_idx_reorder, :] = features[test_idx_range, :]
     adj = nx.adjacency_matrix(nx.from_dict_of_lists(graph))
+    print ("Adjacency Matrix created from the graph:", adj)
 
     labels = np.vstack((ally, ty))
+    print ("labels:", labels)
     labels[test_idx_reorder, :] = labels[test_idx_range, :]
+    print ("labels after reordering the indices:", labels)
 
     idx_test = test_idx_range.tolist()
-    idx_train = range(len(y))
-    idx_val = range(len(y), len(y)+500)
+    print ("\ntest indices idx_test:", idx_test)
 
+    idx_train = range(len(y))
+    print ("\nrain indices idx_train:", idx_train)
+
+    idx_val = range(len(y), len(y)+500)
+    print ("\nval indices idx_val:", idx_val)
+
+    print("Calling the sample mask function to create masks")
     train_mask = sample_mask(idx_train, labels.shape[0])
+    print ("train_mask", train_mask)
     val_mask = sample_mask(idx_val, labels.shape[0])
+    print ("val_mask", val_mask)
     test_mask = sample_mask(idx_test, labels.shape[0])
+    print ("test_mask", test_mask)
 
     y_train = np.zeros(labels.shape)
     y_val = np.zeros(labels.shape)
     y_test = np.zeros(labels.shape)
     y_train[train_mask, :] = labels[train_mask, :]
+    print ("y_train:", y_train)
     y_val[val_mask, :] = labels[val_mask, :]
+    print ("y_val:", y_val)
     y_test[test_mask, :] = labels[test_mask, :]
-    
+    print ("y_test:", y_test)
+
     # Adj and features matrices are in scipy sparse linked list format.
     # Other matrices are in numpy array format
     return adj.tolil(), features, y_train, y_val, y_test, train_mask, val_mask, test_mask
@@ -96,8 +155,12 @@ def sparse_to_tuple(sparse_mx):
     if not sp.isspmatrix_coo(sparse_mx):
         sparse_mx = sparse_mx.tocoo()
     coords = np.vstack((sparse_mx.row, sparse_mx.col)).transpose()
+    print ("coords:", coords)
     values = sparse_mx.data
+    print ("values:", values)
     shape = sparse_mx.shape
+    print ("shape:", shape)
+
     return coords, values, shape
 
 
@@ -116,6 +179,8 @@ def split_citation_data(adj):
     assert np.diag(adj.todense()).sum() == 0
 
     adj_triu = sp.triu(adj)
+    print ("adj_triu:", adj_triu)
+    print ("Calling the sparse_to_tuple function and passing adj_triu in it")
     adj_tuple = sparse_to_tuple(adj_triu)
     edges = adj_tuple[0]
     edges_all = sparse_to_tuple(adj)[0]
